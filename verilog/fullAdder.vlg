@@ -32,11 +32,16 @@ module fullAdder(A,B,S,Cin, Cout);
     output S,Cout;
     wire w1, w2, w3;
     
-    xor xor1(w1, A, B);
-    xor xor2(S, w1, Cin);
-    
-    and and1(w2, A, B);
-    and and2(w3, w1, Cin);
+    halfAdder hfAdd1(A,B,w1,w2);
+    halfAdder hfAdd2(Cin, w1, S, w3);
     
     or or1(Cout, w3, w2);
+    
+    // xor xor1(w1, A, B);
+    // xor xor2(S, w1, Cin);
+    
+    // and and1(w2, A, B);
+    // and and2(w3, w1, Cin);
+    
+    // or or1(Cout, w3, w2);
 endmodule
